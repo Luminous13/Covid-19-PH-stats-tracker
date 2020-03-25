@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Covid-19 Stats tracker for The Philippines
+
 ## Available Scripts
 
 In the project directory, you can run:
