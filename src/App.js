@@ -32,7 +32,7 @@ const header = {
 const content = {
   color: "white",
   fontWeight: "bold",
-  fontSize: 45
+  fontSize: 100
 };
 
 const BoxContainer = props => (
