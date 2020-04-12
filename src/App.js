@@ -6,7 +6,7 @@ import "antd/dist/antd.css";
 import "./index.css"
 
 const link =
-  "https://services5.arcgis.com/mnYJ21GiFTR97WFg/arcgis/rest/services/slide_fig/FeatureServer/0/query?f=json&where=1=1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=[{%22statisticType%22:%22sum%22,%22onStatisticField%22:%22deaths%22,%22outStatisticFieldName%22:%22deaths%22},%20{%22statisticType%22:%22sum%22,%22onStatisticField%22:%22tests%22,%22outStatisticFieldName%22:%22tests%22},{%22statisticType%22:%22sum%22,%22onStatisticField%22:%22recovered%22,%22outStatisticFieldName%22:%22recovered%22},{%22statisticType%22:%22sum%22,%22onStatisticField%22:%22PUIs%22,%22outStatisticFieldName%22:%22PUIs%22},%20{%22statisticType%22:%22sum%22,%22onStatisticField%22:%22PUMs%22,%22outStatisticFieldName%22:%22PUMs%22},{%22statisticType%22:%22sum%22,%22onStatisticField%22:%22confirmed%22,%22outStatisticFieldName%22:%22confirmed%22}]&cacheHint=true";
+  "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/Coronavirus_2019_nCoV_Cases/FeatureServer/2/query?where=Country_Region%20%3D%20%27PHILIPPINES%27&outFields=OBJECTID,Country_Region,Last_Update,Confirmed,Deaths,Recovered&outSR=4326&f=json";
 
 const container = {
   height: "100vh",
@@ -65,6 +65,7 @@ const BoxContainer = props => (
 const getData = () =>
   new Promise(resolve => {
     axios.get(link).then(response => {
+      console.log(response.data.features[0].attributes)
       resolve(response.data.features[0].attributes);
     });
   });
@@ -90,9 +91,9 @@ function App() {
   useEffect(() => {
     getData().then(result => {
       setTests(result.tests);
-      setCases(result.confirmed);
-      setDeaths(result.deaths);
-      setRecovered(result.recovered);
+      setCases(result.Confirmed);
+      setDeaths(result.Deaths);
+      setRecovered(result.Recovered);
       setPUI(result.PUIs);
       setPUM(result.PUMs);
     });
